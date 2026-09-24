@@ -37,9 +37,13 @@ def generate_jwt(payload: AdminJWTPayload) -> str:
     return jwt.encode(payload.model_dump(), 
                       settings.ADMIN_JWT_SECRET, 
                       algorithm=settings.JWT_ALGORITHM)
+ 
 
+# This is a JWT token validation scheme for FastAPI endpoints. 
+# HTTPBearer scheme is used to extract the JWT token from the Authorization header.
+# It returns a reponse model called HTTPAuthorizationCredentials containing the extracted JWT token.
+oauth2_schema = HTTPBearer()
 
-oauth2_schema = HTTPBearer() 
 def validate_jwt_token(header: HTTPAuthorizationCredentials = Depends(oauth2_schema)) -> dict:
     try: 
         payload_data = jwt.decode(header.credentials, settings.ADMIN_JWT_SECRET, algorithms=settings.JWT_ALGORITHM)
