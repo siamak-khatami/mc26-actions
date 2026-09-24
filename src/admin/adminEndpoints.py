@@ -7,6 +7,10 @@ from utils.constants import Endpoints
 from src.admin.adminSchema import AdminRegData, AdminLoginData, AdminRegResponse
 from utils.data_types import AdminJWTPayload
 from utils.db import get_db
+from logger import get_logger
+logger = get_logger()
+
+
 admin_router = APIRouter(prefix=Endpoints.ADMIN, tags=["admin"])
 
 #Checklist to have a good practice in endpoint desing,
@@ -33,14 +37,18 @@ def register_admin(admin_reg_data: AdminRegData, db=Depends(get_db)):
     # then we need to use a reversible encryption method, usually with addition secrets saved alongside.
     # Hashing the password before saving
     admin_reg_data.password = hash_password(admin_reg_data.password)
-
-    db.add_admin(admin_reg_data)
+    try:
+        db.add_admin(admin_reg_data)
+    except Exception as e:
+        logger.error(f"Error registering admin: {e}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error.")
+    # db.add_admin(admin_reg_data)  # This line is now redundant and should be removed
+    logger.info(f"Admin registered: {admin_reg_data.email}")
     return AdminRegResponse(
         name=admin_reg_data.name,
         email=admin_reg_data.email
     )
-
-
+ 
 @admin_router.post(Endpoints.LOGIN,
                    status_code=status.HTTP_200_OK)
 def login_admin(admin_login_data: AdminLoginData, db=Depends(get_db)):
