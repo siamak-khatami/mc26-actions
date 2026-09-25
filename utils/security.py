@@ -12,6 +12,7 @@ from config import Settings
 from utils.data_types import AdminJWTPayload
 settings = Settings()
 
+
 def hash_context() -> CryptContext:
     return CryptContext(schemes=["bcrypt", "sha256_crypt", "argon2"], deprecated="auto")
 
@@ -44,9 +45,15 @@ def generate_jwt(payload: AdminJWTPayload) -> str:
 # It returns a reponse model called HTTPAuthorizationCredentials containing the extracted JWT token.
 oauth2_schema = HTTPBearer()
 
-def validate_jwt_token(header: HTTPAuthorizationCredentials = Depends(oauth2_schema)) -> dict:
+
+def validate_jwt_token(header: HTTPAuthorizationCredentials = Depends(oauth2_schema)) -> AdminJWTPayload:
+    # Extract the JWT token from the Authorization header and validate it.
     try: 
-        payload_data = jwt.decode(header.credentials, settings.ADMIN_JWT_SECRET, algorithms=settings.JWT_ALGORITHM)
-        return payload_data
+        # Decode the JWT token using the secret and algorithm specified in the settings.
+        payload_data = jwt.decode(header.credentials, 
+                                  settings.ADMIN_JWT_SECRET,
+                                  algorithms=settings.JWT_ALGORITHM)
+        # Return the decoded payload as an instance of AdminJWTPayload.
+        return AdminJWTPayload(**payload_data)
     except jwt.JWTError:
         raise HTTPException(status_code=401, detail="Invalid JWT token.")

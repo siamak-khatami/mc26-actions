@@ -17,11 +17,10 @@ The final result should be accessible publicly.
    `poetry update`
    `make poetry-export`
 
-
 ## Project Description
 
 ### A route that we can manage admins
 
 1. An endpoint to register admins
 2. An endpoint to login as admin
-3. An endpoint
+3. An endpoint to validate the admin

@@ -4,9 +4,11 @@ from fastapi import APIRouter, status, Depends, HTTPException
 from utils.security import validate_jwt_token
 from utils.security import hash_password, verify_and_update_password, generate_jwt
 from utils.constants import Endpoints
-from src.admin.adminSchema import AdminRegData, AdminLoginData, AdminRegResponse
+from src.admin.adminSchema import AdminRegData, AdminLoginData, AdminRegResponse, AdminLoginResponse, AdminValidateResponse
 from utils.data_types import AdminJWTPayload
 from utils.db import get_db
+
+# Importing logger for logging purposes
 from logger import get_logger
 logger = get_logger()
 
@@ -50,7 +52,8 @@ def register_admin(admin_reg_data: AdminRegData, db=Depends(get_db)):
     )
  
 @admin_router.post(Endpoints.LOGIN,
-                   status_code=status.HTTP_200_OK)
+                   status_code=status.HTTP_200_OK,
+                   response_model=AdminLoginResponse)
 def login_admin(admin_login_data: AdminLoginData, db=Depends(get_db)):
     # First we verify the email and that the user exists in the database.
     admin = db.get_admin(admin_login_data.email)
@@ -62,13 +65,19 @@ def login_admin(admin_login_data: AdminLoginData, db=Depends(get_db)):
 
     # Generating JWT to return to the user
     payload = AdminJWTPayload(email=admin.email)
-    print(payload)
     jwt_token = generate_jwt(payload) 
-    return {"message": "Admin logged in successfully.", "token": jwt_token}
+    return AdminLoginResponse(
+        token=jwt_token
+    )
 
 @admin_router.post(Endpoints.VALIDATE)
+def validate_admin(admin_payload=Depends(validate_jwt_token),
+                   status_code=status.HTTP_200_OK,
+                   response_model=AdminValidateResponse)
 def validate_admin(admin_payload=Depends(validate_jwt_token)):
-    return {"message": "Admin profile information.", "admin_payload": admin_payload}
+    return AdminValidateResponse(
+        admin_payload=admin_payload.model_dump()
+    )
 
 @admin_router.get(Endpoints.ROOT)
 def read_admin():

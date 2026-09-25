@@ -1,0 +1,28 @@
+# Docker compose is a file to define and manage multi-container Docker applications.
+# This file defines the services, networks, and volumes for the Docker application.
+services:
+  # Each service starts with a name. 
+  mc26:
+    # We either build an image first or use an image. 
+    # Here we are specifying the build context and Dockerfile for the service.
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    # Exposing the ports for the service to be accessible from the host machine.
+    ports:
+      - "8000:8000"
+    # Mounting volumes for persistent storage and logs.
+    volumes:
+      # Mount the current directory to /app in the container.
+      - "./:/app"
+      # Mount the logs volume to /logs in the container. The mc26-logs volume is defined at the bottom of this file.
+      - "mc26-logs:/logs"
+    # Loading environment variables from a file.
+    env_file:
+      - .env
+    # Command to run the service. We now can exclude the CMD from the dockerfile.
+    command: "uvicorn main:voting_app --host 0.0.0.0 --port 8000 --reload"
+
+volumes:
+  # Define the mc26-logs volume for persistent log storage. This equals to docker create volume mc26-logs.
+  mc26-logs:

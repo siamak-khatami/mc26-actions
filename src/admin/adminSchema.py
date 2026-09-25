@@ -16,3 +16,13 @@ class AdminRegResponse(BaseModel):
 class AdminLoginData(BaseModel):
     email: EmailStr
     password: SecretStr
+
+
+class AdminLoginResponse(BaseModel):
+    message: str = "Admin logged in successfully."
+    token: str
+
+
+class AdminValidateResponse(BaseModel):
+    message: str = "Admin token is valid."
+    admin_payload: dict
