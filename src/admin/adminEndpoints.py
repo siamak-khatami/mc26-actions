@@ -73,8 +73,7 @@ def login_admin(admin_login_data: AdminLoginData, db=Depends(get_db)):
 @admin_router.post(Endpoints.VALIDATE)
 def validate_admin(admin_payload=Depends(validate_jwt_token),
                    status_code=status.HTTP_200_OK,
-                   response_model=AdminValidateResponse)
-def validate_admin(admin_payload=Depends(validate_jwt_token)):
+                   response_model=AdminValidateResponse):
     return AdminValidateResponse(
         admin_payload=admin_payload.model_dump()
     )
