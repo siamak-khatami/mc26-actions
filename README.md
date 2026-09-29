@@ -24,3 +24,15 @@ The final result should be accessible publicly.
 1. An endpoint to register admins
 2. An endpoint to login as admin
 3. An endpoint to validate the admin
+
+## Hosts for database in docker
+
+### If you are using a composer or a docker service the host should refer to that service name
+
+### If you are going to refer to your local machine (imagine you have installed postgres on your machine directly) and you
+
+want to use it in conjunciton with your docker application. host.docker.internal
+
+### A service on internet
+
+Eaasily point to the domain name there
