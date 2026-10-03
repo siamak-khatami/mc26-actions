@@ -31,6 +31,9 @@ admin_router = APIRouter(prefix=Endpoints.ADMIN, tags=["admin"])
                    status_code=status.HTTP_201_CREATED,
                    response_model=AdminRegResponse)
 def register_admin(admin_reg_data: AdminRegData, db=Depends(get_db)):
+    """
+    This endpoint receives registration data for a new admin, hashes the password, and stores the admin information in the database.
+    """
     # First we need to have db somewhere to save this info
     # We NEVER save senstive information in a db as their inital form.
     # Based on the future expected usecases, we may have 2 scenarios.
@@ -100,6 +103,9 @@ def read_admin():
 @admin_router.delete(Endpoints.ROOT,
                    status_code=status.HTTP_204_NO_CONTENT)
 def delete_admin(admin_payload=Depends(validate_jwt_token), db=Depends(get_db)):
+    """
+    As a description
+    """
     admin = db.query(Admin).filter(Admin.email == admin_payload.email).first()
     if not admin:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Admin not found.")

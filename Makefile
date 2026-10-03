@@ -1,6 +1,10 @@
 poetry-export:
 	poetry export -f requirements.txt --output requirements.txt --without-hashes
 
+test-api:
+	docker compose -f docker-compose.test.yml down --remove-orphans
+	docker compose -f docker-compose.test.yml build
+	docker compose -f docker-compose.test.yml up --abort-on-container-exit --remove-orphans
 # build-docker:
 # 	docker build -t mc26-image .
 

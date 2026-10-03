@@ -8,6 +8,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+    container_name: mc26_container
     # Exposing the ports for the service to be accessible from the host machine.
     ports:
       - "8000:8000"

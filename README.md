@@ -36,3 +36,7 @@ want to use it in conjunciton with your docker application. host.docker.internal
 ### A service on internet
 
 Eaasily point to the domain name there
+
+## Testing
+
+For testing, we use `pytest` and `pytest-html` packages.

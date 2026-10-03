@@ -27,4 +27,4 @@ COPY . .
 EXPOSE 8000
 
 # Set the default command to run the application using uvicorn.
-CMD ["uvicorn", "main:voting_app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# CMD ["uvicorn", "main:voting_app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
