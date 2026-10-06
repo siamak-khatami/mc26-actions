@@ -5,7 +5,7 @@ name: Basic Workflow
 
 on:
   push:
-    branches: [main, nginx]
+    branches: [main, nginx, actions]
 
   pull_request:
     branches:

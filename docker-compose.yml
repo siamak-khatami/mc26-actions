@@ -51,6 +51,7 @@ services:
       - "443:443"
     depends_on:
       - mc26
+      - voting_db
 
 volumes:
   # Define the mc26-logs volume for persistent log storage. This equals to docker create volume mc26-logs.
