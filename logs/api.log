@@ -1,0 +1,302 @@
+2026-09-24 09:36:41,116 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-24 13:33:46,331 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-24 13:33:48,259 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-24 13:33:50,084 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-24 13:39:50,220 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-24 14:20:56,892 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-28 18:14:36,980 - voting_app - ERROR - '
+Error occurred while committing the new admin to the database.
+ -------------------------
+2026-09-28 18:15:56,977 - voting_app - ERROR - '
+Error occurred while committing the new admin to the database. 
+ ${e}
+ -------------------------
+2026-09-28 18:16:17,583 - voting_app - ERROR - '
+Error occurred while committing the new admin to the database. 
+ 'dict' object has no attribute 'exclude'
+ -------------------------
+2026-09-29 13:56:04,950 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-29 13:59:54,214 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-09-29 14:30:03,896 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-10-01 07:22:25,845 - voting_app - INFO - '
+Admin registered: user@example.com
+ -------------------------
+2026-10-01 07:23:22,013 - voting_app - INFO - '
+Admin registered: Lou4@gmail.com
+ -------------------------
+2026-10-01 07:23:23,531 - voting_app - INFO - '
+Admin registered: Samanta18@hotmail.com
+ -------------------------
+2026-10-01 07:23:31,037 - voting_app - INFO - '
+Admin registered: Ottilie.Halvorson@gmail.com
+ -------------------------
+2026-10-01 07:23:32,527 - voting_app - INFO - '
+Admin registered: Russ.Yundt@yahoo.com
+ -------------------------
+2026-10-01 07:23:33,851 - voting_app - INFO - '
+Admin registered: Mertie_Rodriguez42@hotmail.com
+ -------------------------
+2026-10-01 07:23:35,136 - voting_app - INFO - '
+Admin registered: Keyshawn_Walter98@yahoo.com
+ -------------------------
+2026-10-01 07:25:30,510 - voting_app - INFO - '
+Admin registered: Barney4@yahoo.com
+ -------------------------
+2026-10-01 07:25:41,704 - voting_app - INFO - '
+Admin registered: Willa_Cremin28@gmail.com
+ -------------------------
+2026-10-01 07:26:36,329 - voting_app - INFO - '
+Admin registered: Lisa19@gmail.com
+ -------------------------
+2026-10-01 07:26:55,362 - voting_app - INFO - '
+Admin registered: Wilton_Fisher10@hotmail.com
+ -------------------------
+2026-10-01 07:27:02,767 - voting_app - INFO - '
+Admin registered: Elmore.Morissette97@gmail.com
+ -------------------------
+2026-10-01 07:28:41,027 - voting_app - INFO - '
+Admin registered: Trinity27@yahoo.com
+ -------------------------
+2026-10-01 07:30:13,066 - voting_app - INFO - '
+Admin registered: Lavern31@yahoo.com
+ -------------------------
+2026-10-01 07:31:58,565 - voting_app - INFO - '
+Admin registered: Ibrahim91@yahoo.com
+ -------------------------
+2026-10-01 07:32:19,888 - voting_app - INFO - '
+Admin registered: Bryana.Stiedemann@gmail.com
+ -------------------------
+2026-10-01 07:33:39,881 - voting_app - INFO - '
+Admin registered: Morris.Pagac91@yahoo.com
+ -------------------------
+2026-10-01 07:34:00,926 - voting_app - INFO - '
+Admin registered: Kade25@hotmail.com
+ -------------------------
+2026-10-01 07:34:07,685 - voting_app - INFO - '
+Admin registered: Dariana.Weissnat34@yahoo.com
+ -------------------------
+2026-10-01 07:34:18,424 - voting_app - INFO - '
+Admin registered: Kaia_Zieme54@yahoo.com
+ -------------------------
+2026-10-01 07:34:40,416 - voting_app - INFO - '
+Admin registered: Lilian77@gmail.com
+ -------------------------
+2026-10-01 07:34:53,391 - voting_app - INFO - '
+Admin registered: Olen3@hotmail.com
+ -------------------------
+2026-10-01 07:35:03,313 - voting_app - INFO - '
+Admin registered: Adolphus65@hotmail.com
+ -------------------------
+2026-10-01 07:35:04,943 - voting_app - INFO - '
+Admin registered: Bernita.Moore@yahoo.com
+ -------------------------
+2026-10-01 07:35:12,749 - voting_app - INFO - '
+Admin registered: Matt.Bins@hotmail.com
+ -------------------------
+2026-10-01 07:35:18,509 - voting_app - INFO - '
+Admin registered: Corene35@yahoo.com
+ -------------------------
+2026-10-01 07:37:55,631 - voting_app - INFO - '
+Admin registered: Raegan58@yahoo.com
+ -------------------------
+2026-10-01 07:38:22,362 - voting_app - INFO - '
+Admin registered: Winifred.Bogan@gmail.com
+ -------------------------
+2026-10-01 07:38:36,922 - voting_app - INFO - '
+Admin registered: Gisselle_Grimes27@hotmail.com
+ -------------------------
+2026-10-01 07:40:21,479 - voting_app - INFO - '
+Admin registered: Nova8@yahoo.com
+ -------------------------
+2026-10-01 07:40:59,645 - voting_app - INFO - '
+Admin registered: Abraham_Gutkowski14@yahoo.com
+ -------------------------
+2026-10-01 07:41:27,488 - voting_app - INFO - '
+Admin registered: Waino.Heller95@hotmail.com
+ -------------------------
+2026-10-01 07:58:55,975 - voting_app - INFO - '
+Admin registered: Ebony.Bergnaum@hotmail.com
+ -------------------------
+2026-10-01 07:59:12,323 - voting_app - INFO - '
+Admin registered: Zola_Nolan30@gmail.com
+ -------------------------
+2026-10-01 08:07:48,243 - voting_app - INFO - '
+Admin registered: Ramiro_Wiegand@yahoo.com
+ -------------------------
+2026-10-01 08:10:17,577 - voting_app - INFO - '
+Admin registered: Mitchell_Green@gmail.com
+ -------------------------
+2026-10-01 08:10:33,254 - voting_app - INFO - '
+Admin registered: Ari.Bosco@gmail.com
+ -------------------------
+2026-10-01 08:11:36,288 - voting_app - INFO - '
+Admin registered: Yvette_Dare@hotmail.com
+ -------------------------
+2026-10-01 08:12:26,080 - voting_app - INFO - '
+Admin registered: Fabiola.Bayer70@hotmail.com
+ -------------------------
+2026-10-01 08:12:48,797 - voting_app - INFO - '
+Admin registered: Fiona57@yahoo.com
+ -------------------------
+2026-10-01 08:13:42,669 - voting_app - INFO - '
+Admin registered: Daisha89@hotmail.com
+ -------------------------
+2026-10-01 08:13:55,613 - voting_app - INFO - '
+Admin registered: Trent_Krajcik@hotmail.com
+ -------------------------
+2026-10-01 08:27:58,308 - voting_app - INFO - '
+Admin registered: Vena42@gmail.com
+ -------------------------
+2026-10-01 08:28:31,741 - voting_app - INFO - '
+Admin registered: Olaf_Kessler21@yahoo.com
+ -------------------------
+2026-10-01 08:28:44,787 - voting_app - INFO - '
+Admin registered: Angel.Nicolas86@hotmail.com
+ -------------------------
+2026-10-01 08:29:22,428 - voting_app - INFO - '
+Admin registered: Gudrun.Schmidt61@hotmail.com
+ -------------------------
+2026-10-01 08:55:22,212 - voting_app - INFO - '
+Admin registered: Hobart_Welch87@gmail.com
+ -------------------------
+2026-10-01 08:56:56,156 - voting_app - INFO - '
+Admin registered: Marlen_Boyle@hotmail.com
+ -------------------------
+2026-10-01 08:56:56,615 - voting_app - INFO - '
+Admin registered: Daisy.OConner32@hotmail.com
+ -------------------------
+2026-10-01 08:56:57,059 - voting_app - INFO - '
+Admin registered: Ressie_King@hotmail.com
+ -------------------------
+2026-10-01 08:57:31,353 - voting_app - INFO - '
+Admin registered: Friedrich20@yahoo.com
+ -------------------------
+2026-10-01 08:59:18,954 - voting_app - INFO - '
+Admin registered: Fredrick_Schimmel@yahoo.com
+ -------------------------
+2026-10-01 08:59:45,132 - voting_app - INFO - '
+Admin registered: Rachelle_Leuschke67@gmail.com
+ -------------------------
+2026-10-01 08:59:53,962 - voting_app - INFO - '
+Admin registered: Alan93@yahoo.com
+ -------------------------
+2026-10-01 08:59:59,804 - voting_app - INFO - '
+Admin registered: Lorine93@yahoo.com
+ -------------------------
+2026-10-01 09:00:10,995 - voting_app - INFO - '
+Admin registered: Gerda.Runolfsson@gmail.com
+ -------------------------
+2026-10-01 09:00:11,918 - voting_app - INFO - '
+Admin registered: Rubie71@hotmail.com
+ -------------------------
+2026-10-01 09:00:12,784 - voting_app - INFO - '
+Admin registered: Weldon_Zemlak53@gmail.com
+ -------------------------
+2026-10-01 13:17:03,298 - voting_app - INFO - '
+Admin registered: Toy.Howell@yahoo.com
+ -------------------------
+2026-10-01 13:17:23,395 - voting_app - INFO - '
+Admin registered: Blanca_King10@yahoo.com
+ -------------------------
+2026-10-01 13:17:24,972 - voting_app - INFO - '
+Admin registered: Delta.Johns59@yahoo.com
+ -------------------------
+2026-10-01 13:17:26,323 - voting_app - INFO - '
+Admin registered: Vito_Kuvalis@hotmail.com
+ -------------------------
+2026-10-01 13:17:27,837 - voting_app - INFO - '
+Admin registered: Courtney.Franecki15@yahoo.com
+ -------------------------
+2026-10-01 13:17:29,307 - voting_app - INFO - '
+Admin registered: Angelina83@hotmail.com
+ -------------------------
+2026-10-01 13:24:27,951 - voting_app - INFO - '
+Admin registered: Skye13@gmail.com
+ -------------------------
+2026-10-01 13:26:30,862 - voting_app - INFO - '
+Admin registered: Heidi_Wisozk@gmail.com
+ -------------------------
+2026-10-01 13:31:41,467 - voting_app - INFO - '
+Admin registered: May72@gmail.com
+ -------------------------
+2026-10-01 13:31:47,502 - voting_app - INFO - '
+Admin registered: Hillary2@gmail.com
+ -------------------------
+2026-10-01 13:31:53,546 - voting_app - INFO - '
+Admin registered: Giles_Sauer@hotmail.com
+ -------------------------
+2026-10-01 13:33:20,200 - voting_app - INFO - '
+Admin registered: Faustino92@yahoo.com
+ -------------------------
+2026-10-05 17:38:39,715 - voting_app - INFO - '
+Admin registered: Darrell_Borer85@hotmail.com
+ -------------------------
+2026-10-05 18:00:52,439 - voting_app - INFO - '
+Admin registered: Rhoda3@hotmail.com
+ -------------------------
+2026-10-05 18:03:07,119 - voting_app - INFO - '
+Admin registered: Lesley.Hahn0@hotmail.com
+ -------------------------
+2026-10-05 18:24:19,987 - voting_app - INFO - '
+Admin registered: Maryjane.Lesch@hotmail.com
+ -------------------------
+2026-10-05 18:24:34,086 - voting_app - INFO - '
+Admin registered: Mia.Ankunding@hotmail.com
+ -------------------------
+2026-10-05 18:24:39,872 - voting_app - INFO - '
+Admin registered: Enrico_Hessel56@yahoo.com
+ -------------------------
+2026-10-05 18:28:00,580 - voting_app - INFO - '
+Admin registered: Dorian.Raynor@yahoo.com
+ -------------------------
+2026-10-05 18:28:04,389 - voting_app - INFO - '
+Admin registered: Benjamin_Abbott@hotmail.com
+ -------------------------
+2026-10-05 18:28:44,102 - voting_app - INFO - '
+Admin registered: Kavon.Howe@hotmail.com
+ -------------------------
+2026-10-05 18:28:48,861 - voting_app - INFO - '
+Admin registered: Theodore_Koss9@hotmail.com
+ -------------------------
+2026-10-05 18:28:50,972 - voting_app - INFO - '
+Admin registered: Duane_Ritchie26@hotmail.com
+ -------------------------
+2026-10-05 18:29:29,590 - voting_app - INFO - '
+Admin registered: Gino49@hotmail.com
+ -------------------------
+2026-10-05 18:29:32,366 - voting_app - INFO - '
+Admin registered: Melany.Stamm@hotmail.com
+ -------------------------
+2026-10-05 18:29:35,242 - voting_app - INFO - '
+Admin registered: Elisha13@yahoo.com
+ -------------------------
+2026-10-05 18:29:37,015 - voting_app - INFO - '
+Admin registered: Gail.Beier@yahoo.com
+ -------------------------
+2026-10-05 18:29:39,993 - voting_app - INFO - '
+Admin registered: Una78@yahoo.com
+ -------------------------
+2026-10-05 18:29:42,218 - voting_app - INFO - '
+Admin registered: Humberto_Littel23@hotmail.com
+ -------------------------
+2026-10-05 18:32:05,194 - voting_app - INFO - '
+Admin registered: Faye.Moore67@yahoo.com
+ -------------------------
