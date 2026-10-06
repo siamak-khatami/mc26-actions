@@ -7,8 +7,6 @@ services:
     # Here we are specifying the build context and Dockerfile for the service.
     image: $PRODUCTION_VOTING_APP_IMAGE_NAME
     # container_name: mc26_container
-    deploy:
-      replicas: 3
     # The backend is accessible through Nginx, not a published host port.
     # Mounting volumes for persistent storage and logs.
     volumes:

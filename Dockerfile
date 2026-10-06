@@ -23,6 +23,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # It will ignore files and directories listed in the .dockerignore file.
 COPY . .
 
+# Ensure the logs is created 
+RUN mkdir -p /app/logs
+
 # Expose the port that the application will run on.
 EXPOSE 8000
 
