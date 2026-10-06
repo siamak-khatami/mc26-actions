@@ -8,10 +8,10 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: mc26_container
-    # Exposing the ports for the service to be accessible from the host machine.
-    ports:
-      - "8000:8000"
+    # container_name: mc26_container
+    deploy:
+      replicas: 3
+    # The backend is accessible through Nginx, not a published host port.
     # Mounting volumes for persistent storage and logs.
     volumes:
       # Mount the current directory to /app in the container.
@@ -34,6 +34,23 @@ services:
       - "voting_app_db_data:/var/lib/postgresql"
     ports:
       - "5433:5432"
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.nginx
+    container_name: mc26_nginx_container
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - mc26
 
 volumes:
   # Define the mc26-logs volume for persistent log storage. This equals to docker create volume mc26-logs.

@@ -37,6 +37,23 @@ want to use it in conjunciton with your docker application. host.docker.internal
 
 Eaasily point to the domain name there
 
+## Local HTTPS with Nginx
+
+Place your local development certificate and private key at `nginx/nginx.crt`
+and `nginx/nginx.key` before building. The Nginx build context is `nginx`, so
+Dockerfile `COPY` source paths are relative to that directory.
+
+Run `docker compose up --build` and open `https://localhost`. Port 80 redirects
+to HTTPS on port 443 using a 308 redirect, preserving POST methods and bodies.
+A self-signed certificate may trigger a browser warning.
+
+The backend has no published host port; access it through Nginx. Uvicorn trusts
+forwarded headers from the container network so application-generated redirects
+retain HTTPS. Do not publish backend port 8000 while trusting all proxy sources.
+
+The current development image includes the private key. Do not commit the key
+or distribute the image; use runtime-mounted certificates for production.
+
 ## Testing
 
 For testing, we use `pytest` and `pytest-html` packages.
