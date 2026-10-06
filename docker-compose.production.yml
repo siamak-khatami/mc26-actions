@@ -1,0 +1,66 @@
+# Docker compose is a file to define and manage multi-container Docker applications.
+# This file defines the services, networks, and volumes for the Docker application.
+services:
+  # Each service starts with a name. 
+  mc26:
+    # We either build an image first or use an image. 
+    # Here we are specifying the build context and Dockerfile for the service.
+    image: $PRODUCTION_VOTING_APP_IMAGE_NAME
+    # container_name: mc26_container
+    deploy:
+      replicas: 3
+    # The backend is accessible through Nginx, not a published host port.
+    # Mounting volumes for persistent storage and logs.
+    volumes:
+      # Mount the logs volume to /logs in the container. The mc26-logs volume is defined at the bottom of this file.
+      - "mc26-logs:/logs"
+    # Loading environment variables from a file.
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+      - JWT_ALGORITHM=${JWT_ALGORITHM}
+      - ADMIN_JWT_EXPIRE_DAYS=${ADMIN_JWT_EXPIRE_DAYS}    
+    # Command to run the service. We now can exclude the CMD from the dockerfile.
+    command: "uvicorn main:voting_app --host 0.0.0.0 --port 8000"
+    depends_on:
+      - voting_db
+  voting_db:
+    image: postgres:18.6
+    container_name: voting_db_container
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - ADMIN_JWT_SECRET=${ADMIN_JWT_SECRET}
+      - JWT_ALGORITHM=${JWT_ALGORITHM}
+      - ADMIN_JWT_EXPIRE_DAYS=${ADMIN_JWT_EXPIRE_DAYS}  
+    volumes:
+      - "voting_app_db_data:/var/lib/postgresql"
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    image: ghcr.io/siamak-khatami/ournginx26:latest
+    container_name: mc26_nginx_container
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - mc26
+
+volumes:
+  # Define the mc26-logs volume for persistent log storage. This equals to docker create volume mc26-logs.
+  mc26-logs:
+  voting_app_db_data:

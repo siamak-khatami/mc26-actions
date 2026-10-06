@@ -1,0 +1,14 @@
+ssh -i ~/.ssh/id_rsa $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER_IP << 'EOF'
+    echo "Exporting environment variables..."
+    export RUNTIME=production 
+    export ADMIN_JWT_SECRET="$ADMIN_JWT_SECRET"
+    export JWT_ALGORITHM="$JWT_ALGORITHM"
+    export ADMIN_JWT_EXPIRE_DAYS="$ADMIN_JWT_EXPIRE_DAYS"
+    export POSTGRES_USER="$POSTGRES_USER"
+    export POSTGRES_PASSWORD="$POSTGRES_PASSWORD"
+    export POSTGRES_HOST="$POSTGRES_HOST"
+    export POSTGRES_DB="$POSTGRES_DB"
+    export POSTGRES_PORT="$POSTGRES_PORT"
+    export PRODUCTION_VOTING_APP_IMAGE_NAME="$PRODUCTION_VOTING_APP_IMAGE_NAME"
+    echo "Environment variables exported."
+EOF

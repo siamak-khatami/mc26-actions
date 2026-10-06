@@ -1,0 +1,98 @@
+name: Production
+
+on:
+    push:
+        branches:
+            - actions
+ 
+jobs:
+    test:
+        runs-on: ubuntu-latest 
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+        - name: Build and run the tests
+          run: |
+            echo "Running tests..."
+            make test
+
+    build_and_deploy:
+
+        needs: test
+        runs-on: ubuntu-latest
+        environment: Production
+        env: 
+          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
+          JWT_ALGORITHM: ${{ secrets.JWT_ALGORITHM }}
+          ADMIN_JWT_EXPIRE_DAYS: ${{ secrets.ADMIN_JWT_EXPIRE_DAYS }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT}}
+          PRODUCTION_VOTING_APP_IMAGE_NAME: ${{ secrets.PRODUCTION_VOTING_APP_IMAGE_NAME }}
+          PRODUCTION_SERVER_IP: ${{ secrets.PRODUCTION_SERVER_IP }}
+          PRODUCTION_SERVER_USER: ${{ secrets.PRODUCTION_SERVER_USER }}
+          PRODUCTION_SSH_KEY: ${{ secrets.PRODUCTION_SSH_KEY }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+        - name: Login to GitHub Container Registry
+          uses: docker/login-action@v2
+          with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.GH_TOKEN }}
+        - name: Build and push Docker image to GitHub Container Registry
+          # run: |
+          #   echo "Building and pushing Docker image to DockerHub..."
+          #   docker build -t ${{ secrets.PRODUCTION_VOTING_APP_IMAGE_NAME }} .
+          #   docker push ${{ secrets.PRODUCTION_VOTING_APP_IMAGE_NAME }}
+          uses: docker/build-push-action@v4
+          with:
+            context: .
+            file: ./Dockerfile
+            push: true
+            # Production Voting app name should be in your container registary. 
+            tags: ${{ secrets.PRODUCTION_VOTING_APP_IMAGE_NAME }}
+        - name: Build and push Nginx Docker image to GitHub Container Registry
+          uses: docker/build-push-action@v4
+          with:
+            context: .
+            file: ./Dockerfile.nginx
+            push: true
+            tags: ghcr.io/siamak-khatami/ournginx26:latest
+
+        - name: Make the ssh file for ssh connection with our ssh from azure
+          run: |
+            echo "${{ secrets.PRODUCTION_SSH_KEY }}" > ssh_key
+            chmod 600 ssh_key
+            mkdir -p ~/.ssh
+            mv ssh_key ~/.ssh/id_rsa
+            ssh-keyscan -H ${{ secrets.PRODUCTION_SERVER_IP }} >> ~/.ssh/known_hosts
+        - name: Install docker on the production server
+          run: |
+            chmod +x ./scripts/docker_installation.sh
+            ./scripts/docker_installation.sh
+        # - name: export env variables on the production server using envs_export.sh
+        #   run: |
+        #     chmod +x ./scripts/envs_export.sh
+        #     ./scripts/envs_export.sh 
+        - name: Use the production context to run docker compose commands on the production server
+          run: |
+            echo "Creating Context"
+            docker context create production --docker "host=ssh://${{ secrets.PRODUCTION_SERVER_USER }}@${{ secrets.PRODUCTION_SERVER_IP }}"
+            
+            echo "Switching to production Docker context..."
+            docker context use production
+            
+            echo "Deploying application using Docker Compose..."
+            docker compose -f docker-compose.production.yml up -d --remove-orphans
+        - name: Check the app is running by listing the containers on the production server
+          run: |
+            docker context use production
+            ssh -i ~/.ssh/id_rsa ${{ secrets.PRODUCTION_SERVER_USER }}@${{ secrets.PRODUCTION_SERVER_IP }} << 'EOF'
+              echo "Listing Docker containers on the production server..."
+              docker ps
+            EOF
