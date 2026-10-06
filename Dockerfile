@@ -23,6 +23,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # It will ignore files and directories listed in the .dockerignore file.
 COPY . .
 
+# The app writes ./logs/api.log; Git does not track empty folders, so create it in the image.
+RUN mkdir -p /app/logs
+
 # Ensure the logs is created 
 # RUN mkdir -p /app/logs
 

@@ -6,12 +6,14 @@ services:
     # We either build an image first or use an image. 
     # Here we are specifying the build context and Dockerfile for the service.
     image: $PRODUCTION_VOTING_APP_IMAGE_NAME
+    # Without this, an image with the same tag already on the server is reused and never updated.
+    pull_policy: always
     # container_name: mc26_container
     # The backend is accessible through Nginx, not a published host port.
     # Mounting volumes for persistent storage and logs.
     volumes:
       # Mount the logs volume to /logs in the container. The mc26-logs volume is defined at the bottom of this file.
-      - "mc26-logs:/logs"
+      - "mc26-logs:/app/logs"
     # Loading environment variables from a file.
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
@@ -51,6 +53,7 @@ services:
 
   nginx:
     image: ghcr.io/siamak-khatami/ournginx26:latest
+    pull_policy: always
     container_name: mc26_nginx_container
     ports:
       - "80:80"
